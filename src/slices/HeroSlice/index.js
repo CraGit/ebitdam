@@ -1,3 +1,5 @@
+import Hero from "@/components/Hero";
+
 /**
  * @typedef {import("@prismicio/client").Content.HeroSliceSlice} HeroSliceSlice
  * @typedef {import("@prismicio/react").SliceComponentProps<HeroSliceSlice>} HeroSliceProps
@@ -9,7 +11,7 @@ const HeroSlice = ({ slice }) => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      Placeholder component for hero_slice (variation: {slice.variation}) Slices
+   <Hero heading={slice.primary.heading} subtitle={slice.primary.subtitle} button1Text={slice.primary.button1_text} button1Link={slice.primary.button1_link} button2Text={slice.primary.button2_text} button2Link={slice.primary.button2_link}/>
     </section>
   );
 };

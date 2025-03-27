@@ -9,7 +9,7 @@
 					{
 						"type": "heading1",
 						"content": {
-							"text": "Honor"
+							"text": "Simply"
 						}
 					}
 				]
@@ -39,8 +39,8 @@
 				"type": "Text"
 			},
 			"button2_link": {
-				"__TYPE__": "LinkContent",
 				"key": "b7a29e9e-c073-45b7-bd41-461326badcd3",
+				"__TYPE__": "LinkContent",
 				"value": {
 					"__TYPE__": "ExternalLink",
 					"url": "http://twitter.com",
