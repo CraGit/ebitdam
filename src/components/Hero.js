@@ -29,14 +29,19 @@ export default function Hero({
     button2Link,
 }) {
     return (
-        <section className="bg-white lg:grid lg:h-[60vh] lg:place-content-center dark:bg-gray-900">
-            <div className="mx-auto w-screen max-w-screen-xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8 ">
+        <section className="relative lg:grid lg:h-[60vh] lg:place-content-center overflow-hidden">
+            {/* Background gradient */}
+            <div className="absolute inset-0 bg-gradient-to-br from-indigo-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-indigo-900"></div>
+            
+            {/* Optional decorative elements */}
+            <div className="absolute top-0 left-0 w-full h-full overflow-hidden opacity-10">
+                <div className="absolute -top-24 -left-24 w-96 h-96 bg-indigo-300 rounded-full mix-blend-multiply filter blur-3xl"></div>
+                <div className="absolute top-1/3 -right-24 w-96 h-96 bg-indigo-400 rounded-full mix-blend-multiply filter blur-3xl"></div>
+                <div className="absolute -bottom-24 left-1/3 w-96 h-96 bg-indigo-200 rounded-full mix-blend-multiply filter blur-3xl"></div>
+            </div>
+
+            <div className="relative mx-auto w-screen max-w-screen-xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
                 <div className="mx-auto max-w-prose text-center">
-                    {/* <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl dark:text-white">
-              Understand user flow and
-              <strong className="text-indigo-600"> increase </strong>
-              conversions
-            </h1> */}
                     <PrismicRichText field={heading} components={richTextStyling} />
 
                     <p className="mt-4 text-base text-pretty text-gray-700 sm:text-lg/relaxed dark:text-gray-200">

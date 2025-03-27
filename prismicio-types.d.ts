@@ -62,6 +62,7 @@ export type NavigationDocument<Lang extends string = string> =
   >;
 
 type PageDocumentDataSlicesSlice =
+  | WhyUsSliceSlice
   | CtaSliceSlice
   | ServicesSliceSlice
   | HeroSliceSlice;
@@ -445,6 +446,98 @@ export type ServicesSliceSlice = prismic.SharedSlice<
   ServicesSliceSliceVariation
 >;
 
+/**
+ * Item in *WhyUsSlice → Default → Primary → Reasons*
+ */
+export interface WhyUsSliceSliceDefaultPrimaryReasonsItem {
+  /**
+   * Heading field in *WhyUsSlice → Default → Primary → Reasons*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: why_us_slice.default.primary.reasons[].heading
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  heading: prismic.KeyTextField;
+
+  /**
+   * Content field in *WhyUsSlice → Default → Primary → Reasons*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: why_us_slice.default.primary.reasons[].content
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  content: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *WhyUsSlice → Default → Primary*
+ */
+export interface WhyUsSliceSliceDefaultPrimary {
+  /**
+   * Heading field in *WhyUsSlice → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: why_us_slice.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  heading: prismic.KeyTextField;
+
+  /**
+   * Subheading field in *WhyUsSlice → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: why_us_slice.default.primary.subheading
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  subheading: prismic.KeyTextField;
+
+  /**
+   * Reasons field in *WhyUsSlice → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: why_us_slice.default.primary.reasons[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  reasons: prismic.GroupField<
+    Simplify<WhyUsSliceSliceDefaultPrimaryReasonsItem>
+  >;
+}
+
+/**
+ * Default variation for WhyUsSlice Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type WhyUsSliceSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<WhyUsSliceSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *WhyUsSlice*
+ */
+type WhyUsSliceSliceVariation = WhyUsSliceSliceDefault;
+
+/**
+ * WhyUsSlice Shared Slice
+ *
+ * - **API ID**: `why_us_slice`
+ * - **Description**: WhyUsSlice
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type WhyUsSliceSlice = prismic.SharedSlice<
+  "why_us_slice",
+  WhyUsSliceSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -488,6 +581,11 @@ declare module "@prismicio/client" {
       ServicesSliceSliceDefaultPrimary,
       ServicesSliceSliceVariation,
       ServicesSliceSliceDefault,
+      WhyUsSliceSlice,
+      WhyUsSliceSliceDefaultPrimaryReasonsItem,
+      WhyUsSliceSliceDefaultPrimary,
+      WhyUsSliceSliceVariation,
+      WhyUsSliceSliceDefault,
     };
   }
 }

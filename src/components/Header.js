@@ -75,7 +75,7 @@ export function Header({ locales = [], navigation, settings }) {
             <div className="flex items-center gap-4">
               <div className="sm:flex sm:gap-4">
                 <a
-                  className="rounded-lg bg-teal-600 px-5 py-2.5 text-sm font-medium text-white shadow-sm flex items-center"
+                  className="rounded-lg bg-indigo-600 px-5 py-2.5 text-sm font-medium text-white shadow-sm flex items-center hover:bg-indigo-700 transition-colors"
                   href="tel:+385916037653"
                 >
                   <svg
