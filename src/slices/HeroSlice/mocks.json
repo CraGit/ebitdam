@@ -19,11 +19,6 @@
 				"value": "steady",
 				"type": "Text"
 			},
-			"button1_text": {
-				"__TYPE__": "FieldContent",
-				"value": "repeat",
-				"type": "Text"
-			},
 			"button1_link": {
 				"key": "d373b35b-1fef-4f76-95d4-29e3c472912c",
 				"__TYPE__": "LinkContent",
@@ -32,11 +27,6 @@
 					"url": "http://twitter.com",
 					"text": "none"
 				}
-			},
-			"button2_text": {
-				"__TYPE__": "FieldContent",
-				"value": "tongue",
-				"type": "Text"
 			},
 			"button2_link": {
 				"key": "b7a29e9e-c073-45b7-bd41-461326badcd3",

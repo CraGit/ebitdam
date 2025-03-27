@@ -1,0 +1,28 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"text": {
+				"__TYPE__": "FieldContent",
+				"value": "straw",
+				"type": "Text"
+			},
+			"button_link": {
+				"key": "7a2f5629-c714-4119-ae25-cc7ca3cbdcc4",
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://twitter.com",
+					"text": "silver"
+				}
+			},
+			"heading": {
+				"__TYPE__": "FieldContent",
+				"value": "simply",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]

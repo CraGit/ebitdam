@@ -1,8 +1,8 @@
 {
-  "id": "hero_slice",
+  "id": "cta_slice",
   "type": "SharedSlice",
-  "name": "HeroSlice",
-  "description": "HeroSlice",
+  "name": "CtaSlice",
+  "description": "CtaSlice",
   "variations": [
     {
       "id": "default",
@@ -13,36 +13,23 @@
       "imageUrl": "",
       "primary": {
         "heading": {
-          "type": "StructuredText",
-          "config": {
-            "label": "Heading",
-            "placeholder": "",
-            "allowTargetBlank": true,
-            "multi": "heading1,strong"
-          }
-        },
-        "subtitle": {
           "type": "Text",
           "config": {
-            "label": "Subtitle",
+            "label": "Heading",
             "placeholder": ""
           }
         },
-        "button1_link": {
-          "type": "Link",
+        "text": {
+          "type": "Text",
           "config": {
-            "label": "Button1 Link",
-            "placeholder": "",
-            "select": null,
-            "allowTargetBlank": true,
-            "allowText": true,
-            "repeat": false
+            "label": "Text",
+            "placeholder": ""
           }
         },
-        "button2_link": {
+        "button_link": {
           "type": "Link",
           "config": {
-            "label": "Button2 Link",
+            "label": "Button Link",
             "placeholder": "",
             "select": null,
             "allowTargetBlank": true,

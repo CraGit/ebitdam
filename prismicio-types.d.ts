@@ -61,7 +61,10 @@ export type NavigationDocument<Lang extends string = string> =
     Lang
   >;
 
-type PageDocumentDataSlicesSlice = ServicesSliceSlice | HeroSliceSlice;
+type PageDocumentDataSlicesSlice =
+  | CtaSliceSlice
+  | ServicesSliceSlice
+  | HeroSliceSlice;
 
 /**
  * Content for Page documents
@@ -193,6 +196,77 @@ export type AllDocumentTypes =
   | SettingsDocument;
 
 /**
+ * Primary content in *CtaSlice → Default → Primary*
+ */
+export interface CtaSliceSliceDefaultPrimary {
+  /**
+   * Heading field in *CtaSlice → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cta_slice.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  heading: prismic.KeyTextField;
+
+  /**
+   * Text field in *CtaSlice → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cta_slice.default.primary.text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  text: prismic.KeyTextField;
+
+  /**
+   * Button Link field in *CtaSlice → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cta_slice.default.primary.button_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button_link: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+}
+
+/**
+ * Default variation for CtaSlice Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CtaSliceSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<CtaSliceSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *CtaSlice*
+ */
+type CtaSliceSliceVariation = CtaSliceSliceDefault;
+
+/**
+ * CtaSlice Shared Slice
+ *
+ * - **API ID**: `cta_slice`
+ * - **Description**: CtaSlice
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CtaSliceSlice = prismic.SharedSlice<
+  "cta_slice",
+  CtaSliceSliceVariation
+>;
+
+/**
  * Primary content in *HeroSlice → Default → Primary*
  */
 export interface HeroSliceSliceDefaultPrimary {
@@ -217,16 +291,6 @@ export interface HeroSliceSliceDefaultPrimary {
   subtitle: prismic.KeyTextField;
 
   /**
-   * Button1 Text field in *HeroSlice → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: hero_slice.default.primary.button1_text
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  button1_text: prismic.KeyTextField;
-
-  /**
    * Button1 Link field in *HeroSlice → Default → Primary*
    *
    * - **Field Type**: Link
@@ -241,16 +305,6 @@ export interface HeroSliceSliceDefaultPrimary {
     prismic.FieldState,
     never
   >;
-
-  /**
-   * Button2 Text field in *HeroSlice → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: hero_slice.default.primary.button2_text
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  button2_text: prismic.KeyTextField;
 
   /**
    * Button2 Link field in *HeroSlice → Default → Primary*
@@ -421,6 +475,10 @@ declare module "@prismicio/client" {
       SettingsDocument,
       SettingsDocumentData,
       AllDocumentTypes,
+      CtaSliceSlice,
+      CtaSliceSliceDefaultPrimary,
+      CtaSliceSliceVariation,
+      CtaSliceSliceDefault,
       HeroSliceSlice,
       HeroSliceSliceDefaultPrimary,
       HeroSliceSliceVariation,

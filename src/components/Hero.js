@@ -23,9 +23,9 @@ const richTextStyling = {
 export default function Hero({
     heading,
     subtitle,
-    button1Text,
+ 
     button1Link,
-    button2Text,
+ 
     button2Link,
 }) {
     return (
@@ -48,14 +48,14 @@ export default function Hero({
                             className="inline-block rounded border border-indigo-600 bg-indigo-600 px-5 py-3 font-medium text-white shadow-sm transition-colors hover:bg-indigo-700"
                             field={button1Link}
                         >
-                            {button1Text}
+                    
                         </PrismicNextLink>
 
                         <PrismicNextLink
                             className="inline-block rounded border border-gray-200 px-5 py-3 font-medium text-gray-700 shadow-sm transition-colors hover:bg-gray-50 hover:text-gray-900 dark:border-gray-700 dark:text-gray-200 dark:hover:bg-gray-800 dark:hover:text-white"
                             field={button2Link}
                         >
-                            {button2Text}
+                    
                         </PrismicNextLink>
                     </div>
                 </div>

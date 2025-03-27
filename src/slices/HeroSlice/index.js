@@ -11,7 +11,7 @@ const HeroSlice = ({ slice }) => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-   <Hero heading={slice.primary.heading} subtitle={slice.primary.subtitle} button1Text={slice.primary.button1_text} button1Link={slice.primary.button1_link} button2Text={slice.primary.button2_text} button2Link={slice.primary.button2_link}/>
+   <Hero heading={slice.primary.heading} subtitle={slice.primary.subtitle} button1Link={slice.primary.button1_link} button2Link={slice.primary.button2_link}/>
     </section>
   );
 };
