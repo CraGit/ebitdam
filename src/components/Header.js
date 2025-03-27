@@ -40,29 +40,37 @@ export function Header({ locales = [], navigation, settings }) {
             </ul>
 
             {/* Language Selector */}
-            {locales.length > 0 && (
-              <div className="flex items-center space-x-2 border-l pl-8">
-                <span aria-hidden={true} className="text-lg">
-                  🌐
-                </span>
-                <ul className="flex space-x-3">
-                  {locales.map((locale) => (
-                    <li key={locale.lang}>
-                      <PrismicNextLink
-                        href={locale.url}
-                        locale={locale.lang}
-                        aria-label={`Change language to ${locale.lang_name}`}
-                        className={`text-sm hover:text-prime-ten transition-colors duration-300 font-outfit ${
-                          locale.lang === navigation.lang ? "font-semibold" : ""
-                        }`}
-                      >
-                        {locale.lang_name || locale.lang}
-                      </PrismicNextLink>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
+            <div className="flex items-center space-x-2 border-l pl-8">
+              <ul className="flex space-x-3">
+                <li>
+                  <PrismicNextLink
+                    href={navigation.lang === 'en-us' ? '/en-us' : '/en-us'}
+                    locale="en-us"
+                    aria-label="Change language to English"
+                    className={`text-sm hover:text-prime-ten transition-colors duration-300 font-outfit ${
+                      navigation.lang === 'en-us' ? "font-semibold" : ""
+                    }`}
+                  >
+                    EN
+                  </PrismicNextLink>
+                </li>
+                <li>
+                  <span className="text-gray-500 mx-1">|</span>
+                </li>
+                <li>
+                  <PrismicNextLink
+                    href={navigation.lang === 'hr' ? '/hr' : '/hr'}
+                    locale="hr"
+                    aria-label="Change language to Croatian"
+                    className={`text-sm hover:text-prime-ten transition-colors duration-300 font-outfit ${
+                      navigation.lang === 'hr' ? "font-semibold" : ""
+                    }`}
+                  >
+                    HR
+                  </PrismicNextLink>
+                </li>
+              </ul>
+            </div>
           </nav>
 
           {/* Mobile menu button */}
@@ -118,34 +126,41 @@ export function Header({ locales = [], navigation, settings }) {
               </ul>
 
               {/* Mobile Language Selector */}
-              {locales.length > 0 && (
-                <div className="border-t pt-4">
-                  <div className="flex items-center space-x-2">
-                    <span aria-hidden={true} className="text-lg">
-                      🌐
-                    </span>
-                    <ul className="flex space-x-4">
-                      {locales.map((locale) => (
-                        <li key={locale.lang}>
-                          <PrismicNextLink
-                            href={locale.url}
-                            locale={locale.lang}
-                            aria-label={`Change language to ${locale.lang_name}`}
-                            className={`text-sm hover:text-prime-ten transition-colors duration-300 font-outfit ${
-                              locale.lang === navigation.lang
-                                ? "font-semibold"
-                                : ""
-                            }`}
-                            onClick={() => setIsMenuOpen(false)}
-                          >
-                            {locale.lang_name || locale.lang}
-                          </PrismicNextLink>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+              <div className="border-t pt-4">
+                <div className="flex items-center space-x-2">
+                  <ul className="flex space-x-4">
+                    <li>
+                      <PrismicNextLink
+                        href={navigation.lang === 'en-us' ? '/en-us' : '/en-us'}
+                        locale="en-us"
+                        aria-label="Change language to English"
+                        className={`text-sm hover:text-prime-ten transition-colors duration-300 font-outfit ${
+                          navigation.lang === 'en-us' ? "font-semibold" : ""
+                        }`}
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        EN
+                      </PrismicNextLink>
+                    </li>
+                    <li>
+                      <span className="text-gray-500 mx-1">|</span>
+                    </li>
+                    <li>
+                      <PrismicNextLink
+                        href={navigation.lang === 'hr' ? '/hr' : '/hr'}
+                        locale="hr"
+                        aria-label="Change language to Croatian"
+                        className={`text-sm hover:text-prime-ten transition-colors duration-300 font-outfit ${
+                          navigation.lang === 'hr' ? "font-semibold" : ""
+                        }`}
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        HR
+                      </PrismicNextLink>
+                    </li>
+                  </ul>
                 </div>
-              )}
+              </div>
             </nav>
           </div>
         )}
