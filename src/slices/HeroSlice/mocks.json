@@ -4,9 +4,48 @@
 		"variation": "default",
 		"primary": {
 			"heading": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading1",
+						"content": {
+							"text": "Honor"
+						}
+					}
+				]
+			},
+			"subtitle": {
 				"__TYPE__": "FieldContent",
-				"value": "outer",
+				"value": "steady",
 				"type": "Text"
+			},
+			"button1_text": {
+				"__TYPE__": "FieldContent",
+				"value": "repeat",
+				"type": "Text"
+			},
+			"button1_link": {
+				"key": "d373b35b-1fef-4f76-95d4-29e3c472912c",
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://twitter.com",
+					"text": "none"
+				}
+			},
+			"button2_text": {
+				"__TYPE__": "FieldContent",
+				"value": "tongue",
+				"type": "Text"
+			},
+			"button2_link": {
+				"__TYPE__": "LinkContent",
+				"key": "b7a29e9e-c073-45b7-bd41-461326badcd3",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://twitter.com",
+					"text": "center"
+				}
 			}
 		},
 		"items": []

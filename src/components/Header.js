@@ -9,29 +9,129 @@ export function Header({ locales = [], navigation, settings }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-white shadow-sm">
-      <div className="relative px-4 sm:px-6 lg:px-8 py-4">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <PrismicNextLink href="/" className="flex-shrink-0">
-            <span className="sr-only">Go to homepage</span>
-            {prismic.isFilled.image(settings.data.logo) && (
-              <PrismicNextImage
-                field={settings.data.logo}
-                className="h-10 w-auto"
-                alt=""
-              />
-            )}
-          </PrismicNextLink>
+    <header className="bg-white">
+      <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+        <div className="flex h-16 items-center justify-between">
+          <div className="flex-1 md:flex md:items-center md:gap-12">
+            <PrismicNextLink href="/" className="block text-teal-600">
+              <span className="sr-only">Home</span>
+              {prismic.isFilled.image(settings.data.logo) && (
+                <PrismicNextImage
+                  field={settings.data.logo}
+                  className="h-8 w-auto"
+                  alt=""
+                />
+              )}
+            </PrismicNextLink>
+          </div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            <ul className="flex space-x-8">
+          <div className="md:flex md:items-center md:gap-12">
+            <nav aria-label="Global" className="hidden md:block">
+              <ul className="flex items-center gap-6 text-sm">
+                {navigation.data?.links.map((item) => (
+                  <li key={prismic.asText(item.label)}>
+                    <PrismicNextLink
+                      field={item.link}
+                      className="text-gray-500 transition hover:text-gray-500/75"
+                    >
+                      <PrismicText field={item.label} />
+                    </PrismicNextLink>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+
+            {/* Language Selector */}
+            <div className="hidden md:flex items-center ml-6">
+              <div className="flex items-center">
+                <span>
+                  <PrismicNextLink
+                    href={navigation.lang === 'en-us' ? '/en-us' : '/en-us'}
+                    locale="en-us"
+                    aria-label="Change language to English"
+                    className={`text-sm text-gray-500 ${
+                      navigation.lang === 'en-us' ? "font-bold" : ""
+                    }`}
+                  >
+                    EN
+                  </PrismicNextLink>
+                  <span className="text-gray-500 mx-1">|</span>
+                </span>
+                <span>
+                  <PrismicNextLink
+                    href={navigation.lang === 'hr' ? '/hr' : '/hr'}
+                    locale="hr"
+                    aria-label="Change language to Croatian"
+                    className={`text-sm text-gray-500 ${
+                      navigation.lang === 'hr' ? "font-bold" : ""
+                    }`}
+                  >
+                    HR
+                  </PrismicNextLink>
+                </span>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-4">
+              <div className="sm:flex sm:gap-4">
+                <a
+                  className="rounded-lg bg-teal-600 px-5 py-2.5 text-sm font-medium text-white shadow-sm flex items-center"
+                  href="tel:+385916037653"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                    />
+                  </svg>
+                
+                </a>
+              </div>
+
+              <div className="block md:hidden">
+                <button
+                  className="rounded-sm bg-gray-100 p-2 text-gray-600 transition hover:text-gray-600/75"
+                  onClick={() => setIsMenuOpen(!isMenuOpen)}
+                >
+                  <span className="sr-only">
+                    {isMenuOpen ? "Close menu" : "Open menu"}
+                  </span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="size-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile menu */}
+      {isMenuOpen && (
+        <div className="md:hidden absolute z-50 inset-x-0 top-16 bg-white shadow-lg border-t">
+          <nav className="px-4 py-6 space-y-6">
+            <ul className="space-y-4">
               {navigation.data?.links.map((item) => (
                 <li key={prismic.asText(item.label)}>
                   <PrismicNextLink
                     field={item.link}
-                    className="text-base font-medium text-gray-900 hover:text-prime-ten transition-colors duration-300 font-outfit"
+                    className="text-gray-500 transition hover:text-gray-500/75 block"
+                    onClick={() => setIsMenuOpen(false)}
                   >
                     <PrismicText field={item.label} />
                   </PrismicNextLink>
@@ -39,132 +139,43 @@ export function Header({ locales = [], navigation, settings }) {
               ))}
             </ul>
 
-            {/* Language Selector */}
-            <div className="flex items-center space-x-2 border-l pl-8">
-              <ul className="flex space-x-3">
-                <li>
-                  <PrismicNextLink
-                    href={navigation.lang === 'en-us' ? '/en-us' : '/en-us'}
-                    locale="en-us"
-                    aria-label="Change language to English"
-                    className={`text-sm hover:text-prime-ten transition-colors duration-300 font-outfit ${
-                      navigation.lang === 'en-us' ? "font-semibold" : ""
-                    }`}
-                  >
-                    EN
-                  </PrismicNextLink>
-                </li>
-                <li>
-                  <span className="text-gray-500 mx-1">|</span>
-                </li>
-                <li>
-                  <PrismicNextLink
-                    href={navigation.lang === 'hr' ? '/hr' : '/hr'}
-                    locale="hr"
-                    aria-label="Change language to Croatian"
-                    className={`text-sm hover:text-prime-ten transition-colors duration-300 font-outfit ${
-                      navigation.lang === 'hr' ? "font-semibold" : ""
-                    }`}
-                  >
-                    HR
-                  </PrismicNextLink>
-                </li>
-              </ul>
-            </div>
-          </nav>
-
-          {/* Mobile menu button */}
-          <button
-            type="button"
-            className="md:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-900 hover:text-prime-ten hover:bg-gray-100 transition-colors duration-300"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            <span className="sr-only">
-              {isMenuOpen ? "Close menu" : "Open menu"}
-            </span>
-            <svg
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              {isMenuOpen ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              )}
-            </svg>
-          </button>
-        </div>
-
-        {/* Mobile menu */}
-        {isMenuOpen && (
-          <div className="md:hidden absolute top-full left-0 right-0 bg-white shadow-lg border-t">
-            <nav className="px-4 py-6 space-y-6">
-              <ul className="space-y-4">
-                {navigation.data?.links.map((item) => (
-                  <li key={prismic.asText(item.label)}>
+            {/* Mobile Language Selector */}
+            <div className="border-t pt-4">
+              <div className="flex items-center">
+                <div className="flex items-center">
+                  <span>
                     <PrismicNextLink
-                      field={item.link}
-                      className="text-base font-medium text-gray-900 hover:text-prime-ten transition-colors duration-300 block font-outfit"
+                      href={navigation.lang === 'en-us' ? '/en-us' : '/en-us'}
+                      locale="en-us"
+                      aria-label="Change language to English"
+                      className={`text-sm text-gray-500 ${
+                        navigation.lang === 'en-us' ? "font-bold" : ""
+                      }`}
                       onClick={() => setIsMenuOpen(false)}
                     >
-                      <PrismicText field={item.label} />
+                      EN
                     </PrismicNextLink>
-                  </li>
-                ))}
-              </ul>
-
-              {/* Mobile Language Selector */}
-              <div className="border-t pt-4">
-                <div className="flex items-center space-x-2">
-                  <ul className="flex space-x-4">
-                    <li>
-                      <PrismicNextLink
-                        href={navigation.lang === 'en-us' ? '/en-us' : '/en-us'}
-                        locale="en-us"
-                        aria-label="Change language to English"
-                        className={`text-sm hover:text-prime-ten transition-colors duration-300 font-outfit ${
-                          navigation.lang === 'en-us' ? "font-semibold" : ""
-                        }`}
-                        onClick={() => setIsMenuOpen(false)}
-                      >
-                        EN
-                      </PrismicNextLink>
-                    </li>
-                    <li>
-                      <span className="text-gray-500 mx-1">|</span>
-                    </li>
-                    <li>
-                      <PrismicNextLink
-                        href={navigation.lang === 'hr' ? '/hr' : '/hr'}
-                        locale="hr"
-                        aria-label="Change language to Croatian"
-                        className={`text-sm hover:text-prime-ten transition-colors duration-300 font-outfit ${
-                          navigation.lang === 'hr' ? "font-semibold" : ""
-                        }`}
-                        onClick={() => setIsMenuOpen(false)}
-                      >
-                        HR
-                      </PrismicNextLink>
-                    </li>
-                  </ul>
+                    <span className="text-gray-500 mx-1">|</span>
+                  </span>
+                  <span>
+                    <PrismicNextLink
+                      href={navigation.lang === 'hr' ? '/hr' : '/hr'}
+                      locale="hr"
+                      aria-label="Change language to Croatian"
+                      className={`text-sm text-gray-500 ${
+                        navigation.lang === 'hr' ? "font-bold" : ""
+                      }`}
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      HR
+                    </PrismicNextLink>
+                  </span>
                 </div>
               </div>
-            </nav>
-          </div>
-        )}
-      </div>
+            </div>
+          </nav>
+        </div>
+      )}
     </header>
   );
 }

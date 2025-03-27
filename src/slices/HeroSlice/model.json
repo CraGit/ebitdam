@@ -13,10 +13,55 @@
       "imageUrl": "",
       "primary": {
         "heading": {
-          "type": "Text",
+          "type": "StructuredText",
           "config": {
             "label": "Heading",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "heading1,em"
+          }
+        },
+        "subtitle": {
+          "type": "Text",
+          "config": {
+            "label": "Subtitle",
             "placeholder": ""
+          }
+        },
+        "button1_text": {
+          "type": "Text",
+          "config": {
+            "label": "Button1 Text",
+            "placeholder": ""
+          }
+        },
+        "button1_link": {
+          "type": "Link",
+          "config": {
+            "label": "Button1 Link",
+            "placeholder": "",
+            "select": null,
+            "allowTargetBlank": true,
+            "allowText": true,
+            "repeat": false
+          }
+        },
+        "button2_text": {
+          "type": "Text",
+          "config": {
+            "label": "Button2 Text",
+            "placeholder": ""
+          }
+        },
+        "button2_link": {
+          "type": "Link",
+          "config": {
+            "label": "Button2 Link",
+            "placeholder": "",
+            "select": null,
+            "allowTargetBlank": true,
+            "allowText": true,
+            "repeat": false
           }
         }
       },
