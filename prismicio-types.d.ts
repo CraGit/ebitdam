@@ -62,6 +62,8 @@ export type NavigationDocument<Lang extends string = string> =
   >;
 
 type PageDocumentDataSlicesSlice =
+  | AboutUsSliceSlice
+  | TestimonialsSliceSlice
   | WhyUsSliceSlice
   | CtaSliceSlice
   | ServicesSliceSlice
@@ -195,6 +197,51 @@ export type AllDocumentTypes =
   | NavigationDocument
   | PageDocument
   | SettingsDocument;
+
+/**
+ * Primary content in *AboutUsSlice → Default → Primary*
+ */
+export interface AboutUsSliceSliceDefaultPrimary {
+  /**
+   * Content field in *AboutUsSlice → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_us_slice.default.primary.content
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  content: prismic.RichTextField;
+}
+
+/**
+ * Default variation for AboutUsSlice Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AboutUsSliceSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<AboutUsSliceSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *AboutUsSlice*
+ */
+type AboutUsSliceSliceVariation = AboutUsSliceSliceDefault;
+
+/**
+ * AboutUsSlice Shared Slice
+ *
+ * - **API ID**: `about_us_slice`
+ * - **Description**: AboutUsSlice
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AboutUsSliceSlice = prismic.SharedSlice<
+  "about_us_slice",
+  AboutUsSliceSliceVariation
+>;
 
 /**
  * Primary content in *CtaSlice → Default → Primary*
@@ -447,6 +494,108 @@ export type ServicesSliceSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *TestimonialsSlice → Default → Primary → Testimonials*
+ */
+export interface TestimonialsSliceSliceDefaultPrimaryTestimonialsItem {
+  /**
+   * Client field in *TestimonialsSlice → Default → Primary → Testimonials*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonials_slice.default.primary.testimonials[].client
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  client: prismic.KeyTextField;
+
+  /**
+   * Company field in *TestimonialsSlice → Default → Primary → Testimonials*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonials_slice.default.primary.testimonials[].company
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  company: prismic.KeyTextField;
+
+  /**
+   * Content field in *TestimonialsSlice → Default → Primary → Testimonials*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonials_slice.default.primary.testimonials[].content
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  content: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *TestimonialsSlice → Default → Primary*
+ */
+export interface TestimonialsSliceSliceDefaultPrimary {
+  /**
+   * Heading field in *TestimonialsSlice → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonials_slice.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  heading: prismic.KeyTextField;
+
+  /**
+   * Subheading field in *TestimonialsSlice → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonials_slice.default.primary.subheading
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  subheading: prismic.KeyTextField;
+
+  /**
+   * Testimonials field in *TestimonialsSlice → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonials_slice.default.primary.testimonials[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  testimonials: prismic.GroupField<
+    Simplify<TestimonialsSliceSliceDefaultPrimaryTestimonialsItem>
+  >;
+}
+
+/**
+ * Default variation for TestimonialsSlice Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TestimonialsSliceSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<TestimonialsSliceSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *TestimonialsSlice*
+ */
+type TestimonialsSliceSliceVariation = TestimonialsSliceSliceDefault;
+
+/**
+ * TestimonialsSlice Shared Slice
+ *
+ * - **API ID**: `testimonials_slice`
+ * - **Description**: TestimonialsSlice
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TestimonialsSliceSlice = prismic.SharedSlice<
+  "testimonials_slice",
+  TestimonialsSliceSliceVariation
+>;
+
+/**
  * Item in *WhyUsSlice → Default → Primary → Reasons*
  */
 export interface WhyUsSliceSliceDefaultPrimaryReasonsItem {
@@ -568,6 +717,10 @@ declare module "@prismicio/client" {
       SettingsDocument,
       SettingsDocumentData,
       AllDocumentTypes,
+      AboutUsSliceSlice,
+      AboutUsSliceSliceDefaultPrimary,
+      AboutUsSliceSliceVariation,
+      AboutUsSliceSliceDefault,
       CtaSliceSlice,
       CtaSliceSliceDefaultPrimary,
       CtaSliceSliceVariation,
@@ -581,6 +734,11 @@ declare module "@prismicio/client" {
       ServicesSliceSliceDefaultPrimary,
       ServicesSliceSliceVariation,
       ServicesSliceSliceDefault,
+      TestimonialsSliceSlice,
+      TestimonialsSliceSliceDefaultPrimaryTestimonialsItem,
+      TestimonialsSliceSliceDefaultPrimary,
+      TestimonialsSliceSliceVariation,
+      TestimonialsSliceSliceDefault,
       WhyUsSliceSlice,
       WhyUsSliceSliceDefaultPrimaryReasonsItem,
       WhyUsSliceSliceDefaultPrimary,
