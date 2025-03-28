@@ -155,26 +155,48 @@ interface SettingsDocumentData {
   logo: prismic.ImageField<never>;
 
   /**
-   * Newsletter Description field in *Settings*
+   * Company Name field in *Settings*
    *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: Text above the sign up form
-   * - **API ID Path**: settings.newsletterDescription
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.company_name
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  newsletterDescription: prismic.RichTextField;
+  company_name: prismic.KeyTextField;
 
   /**
-   * Newsletter Disclaimer field in *Settings*
+   * Company Address field in *Settings*
    *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: Small text below sign up form
-   * - **API ID Path**: settings.newsletterDisclaimer
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.company_address
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  newsletterDisclaimer: prismic.RichTextField;
+  company_address: prismic.KeyTextField;
+
+  /**
+   * VAT field in *Settings*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.vat
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  vat: prismic.KeyTextField;
+
+  /**
+   * Phone field in *Settings*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.phone
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  phone: prismic.KeyTextField;
 }
 
 /**
@@ -241,6 +263,61 @@ type AboutUsSliceSliceVariation = AboutUsSliceSliceDefault;
 export type AboutUsSliceSlice = prismic.SharedSlice<
   "about_us_slice",
   AboutUsSliceSliceVariation
+>;
+
+/**
+ * Primary content in *ContactSlice → Default → Primary*
+ */
+export interface ContactSliceSliceDefaultPrimary {
+  /**
+   * Heading field in *ContactSlice → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_slice.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  heading: prismic.KeyTextField;
+
+  /**
+   * Subheading field in *ContactSlice → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_slice.default.primary.subheading
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  subheading: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for ContactSlice Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContactSliceSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ContactSliceSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ContactSlice*
+ */
+type ContactSliceSliceVariation = ContactSliceSliceDefault;
+
+/**
+ * ContactSlice Shared Slice
+ *
+ * - **API ID**: `contact_slice`
+ * - **Description**: ContactSlice
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContactSliceSlice = prismic.SharedSlice<
+  "contact_slice",
+  ContactSliceSliceVariation
 >;
 
 /**
@@ -791,6 +868,10 @@ declare module "@prismicio/client" {
       AboutUsSliceSliceDefaultPrimary,
       AboutUsSliceSliceVariation,
       AboutUsSliceSliceDefault,
+      ContactSliceSlice,
+      ContactSliceSliceDefaultPrimary,
+      ContactSliceSliceVariation,
+      ContactSliceSliceDefault,
       CtaSliceSlice,
       CtaSliceSliceDefaultPrimary,
       CtaSliceSliceVariation,

@@ -1,0 +1,19 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"heading": {
+				"__TYPE__": "FieldContent",
+				"value": "mean",
+				"type": "Text"
+			},
+			"subheading": {
+				"__TYPE__": "FieldContent",
+				"value": "slide",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]

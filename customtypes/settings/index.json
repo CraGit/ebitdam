@@ -23,22 +23,32 @@
           "label": "Logo"
         }
       },
-      "newsletterDescription": {
-        "type": "StructuredText",
+      "company_name": {
+        "type": "Text",
         "config": {
-          "label": "Newsletter Description",
-          "placeholder": "Text above the sign up form",
-          "allowTargetBlank": true,
-          "multi": "heading1,paragraph,strong,em,hyperlink,list-item,o-list-item"
+          "label": "Company Name",
+          "placeholder": ""
         }
       },
-      "newsletterDisclaimer": {
-        "type": "StructuredText",
+      "company_address": {
+        "type": "Text",
         "config": {
-          "label": "Newsletter Disclaimer",
-          "placeholder": "Small text below sign up form",
-          "allowTargetBlank": true,
-          "multi": "paragraph,em,strong,hyperlink"
+          "label": "Company Address",
+          "placeholder": ""
+        }
+      },
+      "vat": {
+        "type": "Text",
+        "config": {
+          "label": "VAT",
+          "placeholder": ""
+        }
+      },
+      "phone": {
+        "type": "Text",
+        "config": {
+          "label": "Phone",
+          "placeholder": ""
         }
       }
     }
