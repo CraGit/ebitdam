@@ -1,16 +1,26 @@
 /**
  * @typedef {import("@prismicio/client").Content.ContactSliceSlice} ContactSliceSlice
  * @typedef {import("@prismicio/react").SliceComponentProps<ContactSliceSlice>} ContactSliceProps
- * @type {import("react").FC<ContactSliceProps>}
+ * @param {ContactSliceProps}
  */
-const ContactSlice = ({ slice }) => {
+
+import Contact from "../../components/Contact";
+import { createClient } from "../../prismicio";
+
+const ContactSlice = async ({ slice }) => {
+  const client = createClient();
+  const settings = await client.getSingle("settings");
+
   return (
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      Placeholder component for contact_slice (variation: {slice.variation})
-      Slices
+      <Contact 
+        heading={slice.primary.heading}
+        subheading={slice.primary.subheading}
+        settings={settings}
+      />
     </section>
   );
 };
