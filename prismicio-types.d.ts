@@ -385,9 +385,79 @@ export type HeroSliceSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *HeroSlice → Small → Primary*
+ */
+export interface HeroSliceSliceSmallPrimary {
+  /**
+   * Heading field in *HeroSlice → Small → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero_slice.small.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Subtitle field in *HeroSlice → Small → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero_slice.small.primary.subtitle
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  subtitle: prismic.KeyTextField;
+
+  /**
+   * Button1 Link field in *HeroSlice → Small → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero_slice.small.primary.button1_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button1_link: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+
+  /**
+   * Button2 Link field in *HeroSlice → Small → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero_slice.small.primary.button2_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button2_link: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+}
+
+/**
+ * Small variation for HeroSlice Slice
+ *
+ * - **API ID**: `small`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HeroSliceSliceSmall = prismic.SharedSliceVariation<
+  "small",
+  Simplify<HeroSliceSliceSmallPrimary>,
+  never
+>;
+
+/**
  * Slice variation for *HeroSlice*
  */
-type HeroSliceSliceVariation = HeroSliceSliceDefault;
+type HeroSliceSliceVariation = HeroSliceSliceDefault | HeroSliceSliceSmall;
 
 /**
  * HeroSlice Shared Slice
@@ -727,8 +797,10 @@ declare module "@prismicio/client" {
       CtaSliceSliceDefault,
       HeroSliceSlice,
       HeroSliceSliceDefaultPrimary,
+      HeroSliceSliceSmallPrimary,
       HeroSliceSliceVariation,
       HeroSliceSliceDefault,
+      HeroSliceSliceSmall,
       ServicesSliceSlice,
       ServicesSliceSliceDefaultPrimaryServiceItem,
       ServicesSliceSliceDefaultPrimary,
